@@ -1,0 +1,12 @@
+diff_n_over: 0
+diff_n_0_5: 0
+diff_n_0_4: 0
+diff_n_0_3: 26
+diff_n_0_2: 1947
+diff_n_0_1: 13804
+diff_0.1: 31565
+diff_0.2: 3
+diff_0.3: 0
+diff_0.4: 0
+diff_0.5: 0
+diff_over: 0

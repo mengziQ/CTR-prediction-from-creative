@@ -1,0 +1,12 @@
+diff_n_over: 0
+diff_n_0_5: 5
+diff_n_0_4: 269
+diff_n_0_3: 4065
+diff_n_0_2: 7925
+diff_n_0_1: 5810
+diff_0.1: 3938
+diff_0.2: 11799
+diff_0.3: 10122
+diff_0.4: 638
+diff_0.5: 5
+diff_over: 0
