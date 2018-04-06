@@ -3,7 +3,7 @@
 クリエイティブをタグ要素に分解し、どのタグがCTRを上昇させているのか・もしくは下降させているのかを調べます。  
 
 ## 概要図  
-![概要図](https://github.com/mengziQ/study_room/blob/master/gradient-boosting/lightgbm/pics/overview.PNG)
+![概要図](https://github.com/mengziQ/CTR-prediction-from-creative/blob/master/pics/overview.PNG)
    
 ## 1. Google Adword　APIで入手したクリエイティブとCTR実績値を結合する  
 クリエイティブデータとCTR値は社内専用のAPIでGoogle Adwords APIを操作して取得しているためスクリプトは割愛します。  
@@ -68,7 +68,7 @@ $ python3 kpi_tag.py ctr
 
 
 ## 5. LightGBMによる学習  
-インストール方法は[ここ](https://github.com/mengziQ/study_room/blob/master/gradient-boosting/lightgbm/docs/installation.md)か公式githubを参照ください。  
+インストール方法は[ここ](https://github.com/mengziQ/CTR-prediction-from-creative/blob/master/docs/installation.md)か公式githubを参照ください。  
 
 ```
 $ cd ctr
@@ -94,18 +94,18 @@ $ cd distribution
 $ python3 calc_distirbution.py
 ```
 
-![誤差率分布](https://github.com/mengziQ/study_room/blob/master/gradient-boosting/lightgbm/pics/err_distribution.PNG)
+![誤差率分布](https://github.com/mengziQ/CTR-prediction-from-creative/blob/master/pics/err_distribution.PNG)
 - 「CTR = クリック数/インプレッション数」なので、クリック数＝0の広告のCTRは0になるのですが、0.0000001(極小な値)を代入して学習させたところ、あまり学習がうまくいかなかった模様。。。  
 - 誤差率が(0.9〜1に限らず)全体的に出てしまっているため、もちろんクリック数0のデータだけの問題ではない  
 
-![散布図](https://github.com/mengziQ/study_room/blob/master/gradient-boosting/lightgbm/pics/scatter_plot.PNG)
+![散布図](https://github.com/mengziQ/CTR-prediction-from-creative/blob/master/pics/scatter_plot.PNG)
 データはCTR＝0〜0.1の範囲にほぼ集合。赤枠の中のデータが少ないため、ほぼCTR値を当てられていないことになります。  
 
 ## 9. 追加調査  
 CTR値を直接予測することができなくても、タグがCTRを上げているか・下げているかだけでも当てられないか、調査をしました。  
 
 手始めに、CTR値に影響力を持つタグがあるかないかで上記検証を行いたいと思ったため、特徴量重要度を出しました。(trend_analysis/feature_importance.ipynb参照)  
-![特徴量重要度](https://github.com/mengziQ/study_room/blob/master/gradient-boosting/lightgbm/pics/feature_importances.png)
+![特徴量重要度](https://github.com/mengziQ/CTR-prediction-from-creative/blob/master/pics/feature_importances.png)
 
 まずは、全データの中から、最も重要度の高いタグ「product」があるベクトル(＝**基準ベクトル**とします)と、逆に「product」がないベクトルで基準ベクトルに最も類似したベクトルをコサイン類似度で算出します。  
 ```
@@ -113,10 +113,10 @@ $ cd trend_analysis
 $ python3 find_vectors.py
 ```
 この時、そこそこCTRに影響がありそうなタグは排除しようと思いました。そこで色々試行錯誤した結果、重要度上位4つ目あたりまでの固定ならなんとかベクトルが見つかりそうだったので固定しました。  
-![要素固定イメージ](https://github.com/mengziQ/study_room/blob/master/gradient-boosting/lightgbm/pics/find_vec.PNG)
+![要素固定イメージ](https://github.com/mengziQ/CTR-prediction-from-creative/blob/master/pics/find_vec.PNG)
 
 こんな感じで、とりあえず上位2タグ「product」「advertizing」についてCTRを上げるのか下げるのか検証した結果が以下になります。  
-![CTR影響](https://github.com/mengziQ/study_room/blob/master/gradient-boosting/lightgbm/pics/cos_sim.PNG)
+![CTR影響](https://github.com/mengziQ/CTR-prediction-from-creative/blob/master/pics/cos_sim.PNG)
 上げるか下げるかくらいなら分かりそうですかね・・・？  
 気が向いたら全タグについて同様の調査を行うスクリプトを作成します。。。  
 
