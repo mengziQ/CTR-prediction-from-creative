@@ -26,7 +26,7 @@ Fitting 4 folds for each of 1728 candidates, totalling 6912 fits
 totalling fitsの回数と、1回の交差検証のtotalの秒数を見ることで分かる。  
 上記の例であれば、
 ```
-6912　×　約16秒 = 110592秒 = 30.72時間  
+6912　×　約16秒 = 110592秒 = 30.72時間(これは時間かかりすぎ・・・)
 ```
 ### Fitting 4 folds for each of 1728 candidates, totalling 6912 fits  
 - folds: GridSearchCVインスタンス作成時に指定するパラメータ:cvの値。交差検証時にデータを何分割するか。  
