@@ -83,7 +83,7 @@ $ lightgbm config=predict.conf
 ```
 
 ## 7. 精度が良くないのでパラメーターチューニングをした  
-parameter_tuningフォルダを参照ください。
+[parameter_tuningフォルダ](https://github.com/mengziQ/CTR-prediction-from-creative/tree/master/parameter-tuning)を参照ください。
 
 ## 8. モデル検証結果  
 結論としては、CTRの予測精度はほとんど出ませんでした。。。  
