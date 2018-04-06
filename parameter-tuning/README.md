@@ -5,7 +5,7 @@ scikit-learnのGridSearchCVでgrid paramsを指定します。このとき、チ
 
 1. 学習率と木の数  
 2. 木に関するパラメーター：　max_depth, min_child_weight, gamma, subsample, colsample_bytree
-3. 正則化パラメータ: lambda, alphaなど  
+3. 正則化パラメータ:lambda, alphaなど  
 4. 学習率を下げる  
 
 ## Scikit-learn GridSearchCVのfit関数実行ログを見る  
@@ -31,7 +31,7 @@ totalling fitsの回数と、1回の交差検証のtotalの秒数を見ること
 ### Fitting 4 folds for each of 1728 candidates, totalling 6912 fits  
 - folds: GridSearchCVインスタンス作成時に指定するパラメータ:cvの値。交差検証時にデータを何分割するか。  
 - candidates: grid_paramsの組合せ数  
-- totalling: folds　× candidates  
+- fits: folds　× candidates  
 
 ### score  
 公式ドキュメントには「Mean cross-validated score of the best_estimator」とある。  
